@@ -2,6 +2,12 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
+db = {
+    "a": ["one", "two", "three"],
+    "b": ["four", "five", "six"],
+    "c": ["seven", "eight", "nine"]
+}
+
 
 @app.get("/")
 def index():
