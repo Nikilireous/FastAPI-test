@@ -30,3 +30,8 @@ def search(q: str, page: int):
         raise HTTPException(status.HTTP_404_NOT_FOUND, "page out of range")
 
     raise HTTPException(status.HTTP_404_NOT_FOUND, "key does not exist")
+
+
+@app.post("/calculate")
+def calc(a: float, b: float):
+    return {"result": a + b}
