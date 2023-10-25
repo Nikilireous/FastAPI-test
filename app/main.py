@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 
-
 app = FastAPI()
+
 
 @app.get("/")
 def index():
@@ -10,7 +10,8 @@ def index():
 
 @app.post("/users")
 def registration():
-    return {"name":"Nikita"}
+    return {"name": "Nikita"}
+
 
 @app.get("/search")
 def search(q: str):
