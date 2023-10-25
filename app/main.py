@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException, status
 
 app = FastAPI()
 
@@ -20,6 +20,13 @@ def registration():
 
 
 @app.get("/search")
-def search(q: str):
-    print(q)
-    return "OK"
+def search(q: str, page: int):
+    if q in db:
+        value = db[q]
+
+        if 0 <= page - 1 <= len(q) - 1:
+            return {"word": value[page - 1]}
+
+        raise HTTPException(status.HTTP_404_NOT_FOUND, "page out of range")
+
+    raise HTTPException(status.HTTP_404_NOT_FOUND, "key does not exist")
